@@ -1,11 +1,189 @@
-:root{}
+:root {
+    --red: #E3646E;
+    --green: #82BC4F;
+    --yellow: #EABD5F;
+    --purple: #BB72E9;
+    --blue: #3996DB;
 
-*{
+    --gray-100: #0D0E11;
+    --gray-200: #16181D;
+    --gray-300: #292C34;
+    --gray-400: #878EA1;
+    --gray-500: #C0C4CE;
+    --gray-600: #E2E4E9;
+}
+
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    border: 1px solid #33F8;
 }
 
-.container{
+.text-red{
+    color: var(--red);
+}
+.text-green{
+    color: var(--green);
+}
+.text-yellow{
+    color: var(--yellow);
+}
+.text-purple{
+    color: var(--purple);
+}
+.text-blue{
+    color: var(--blue);
+}
+.text-gray-100{
+    color: var(--gray-100);
+}
+.text-gray-200{
+    color: var(--gray-200);
+}
+.text-gray-300{
+    color: var(--gray-300);
+}
+.text-gray-400 {
+    color: var(--gray-400);
+}
+.text-gray-500 {
+    color: var(--gray-500);
+}
+.text-gray-600 {
+    color: var(--gray-600);
+}
+
+.title-lg {
+    font-size: 3.5rem;
+}
+
+.title-md {
+    font-size: 1.5rem;
+}
+
+.title-sm {
+    font-size: 1rem;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+}
+
+.text-md {
+    font-size: 1rem;
+}
+
+.text-sm {
+    font-size: 0.875rem;
+}
+
+.title-lg, .title-md, .title-sm {
+    font-family: 'Asap', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.title-lg, .title-md, .title-sm, .subtitle {
+    line-height: 1.2;
+}
+
+.subtitle{
+    font-family: 'Inconsolata', monospace;
+}
+
+.text-md, .text-sm {
+    font-family: 'Maven Pro', monospace;
+    line-height: 1.4;
+}
+
+.subtitle, .text-md, .text-sm {
+    font-weight: normal;
+}
+
+.no-wrap{
+    white-space: nowrap;
+}
+
+main {
+    width: 100dvw;
+    height: fit-content;
+    background-color: var(--gray-100);
+}
+
+.container {
     margin: 0 auto;
+    width: 100%;
+    height: fit-content;
+    min-height: 100dvh;
+    max-width: 1366px;
+    background-color: var(--gray-200);
+}
+
+/*HERO SECTION*/
+section {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+
+    * {
+        max-width: 1040px;
+    }
+
+    &.hero {
+        min-height: 100dvh;
+        background-image: url('./assets/Background_Intro.png');
+        background-size: cover;
+        background-position: center right;
+
+        > .info {
+            margin: 0 auto;
+            max-width: 650px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            > .profile-pic {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 112px;
+                width: 112px;
+                border-radius: 50%;
+                border: 2px solid var(--red);
+                margin-bottom: 3.5rem;
+
+                .picture {
+                    height: 90%;
+                    width: 90%;
+                    border-radius: 50%;
+                    background-image: url('https://github.com/victorpowilleit.png');
+                    background-size: cover;
+                }
+
+                &::after{
+                    content: '';
+                    position: absolute;
+                    bottom: -10px;
+                    right: -10px;
+
+                    height: 48px;
+                    aspect-ratio: 1/1;
+                    font-weight: bold;
+
+                    background-image: url("./assets/Code.svg");
+                    background-size: cover;
+                }
+            }
+            > .title-lg {
+                margin: 0.5rem 0 1.25rem 0;
+            }
+            > i {
+                font-size: 32px;
+                position: absolute;
+                bottom: 50px;
+            }
+        }
+    }
 }
