@@ -151,6 +151,7 @@ main {
     width: 100dvw;
     height: fit-content;
     background-color: var(--gray-100);
+    user-select: none;
 }
 
 header {
@@ -406,6 +407,7 @@ section {
                 }
                 &:hover{
                     box-shadow: inset 0 0 4px var(--blue);
+                    cursor: pointer;
                 }
             }
         }
