@@ -23,13 +23,13 @@ body {
     background-color: var(--gray-200);
 }
 
-.debug{
-    >*{
+.debug {
+    > * {
         border: 1px solid #33F8;
     }
 }
 
-.text-center{
+.text-center {
     text-align: center;
 }
 
@@ -247,20 +247,30 @@ section {
                 border-radius: 12px;
                 gap: 16px;
                 transition: box-shadow 0.2s;
+                &.animated{
+                    animation-name: rollIn;
+                }
+                animation-duration: 1.2s;
+                animation-timing-function: ease-out;
+                animation-fill-mode: forwards;
+                visibility: hidden;
+
                 &:hover {
                     box-shadow: inset 0 0 4px var(--gray-400);
                 }
 
-                >img{
+                > img {
                     width: 100%;
                     aspect-ratio: 1.9615/1;
                     border-radius: 8px;
                 }
-                >.text{
+
+                > .text {
                     flex: 1;
                     display: flex;
                     flex-direction: column;
-                    >.title-sm {
+
+                    > .title-sm {
                         margin-bottom: 8px;
                     }
 
@@ -271,10 +281,21 @@ section {
 }
 
 @keyframes bounce {
-    0%{
+    0% {
         transform: translateY(0);
     }
-    100%{
+    100% {
         transform: translateY(50%);
+    }
+}
+
+@keyframes rollIn {
+    0% {
+        transform: translateX(-100vw);
+        visibility: visible;
+    }
+    100% {
+        transform: translateX(0);
+        visibility: visible;
     }
 }
