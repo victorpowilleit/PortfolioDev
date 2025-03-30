@@ -31,10 +31,9 @@ const totalDelay = projects.length * delayStep;
 let animated = false
 
 window.onscroll = () => {
+    const opacity = 100 - ((window.scrollY-10)*0.75)
     const targetScrollPosition = projectGrid.getBoundingClientRect().top;
-    if (window.scrollY > 0) {
-        arrowDown.style.opacity = `${100 - (window.scrollY*0.75)}%`
-    }
+    arrowDown.style.opacity = opacity>=100?'100%':opacity<=0?'0':`${opacity}%`
     if (!animated) {
         if (window.innerHeight > targetScrollPosition + 100) {
             projects.forEach((project, index) => {
