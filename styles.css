@@ -273,7 +273,7 @@ section {
 
             > i {
                 font-size: 32px;
-                position: absolute;
+                position: fixed;
                 bottom: 50px;
                 animation: bounce .45s ease-in infinite alternate;
             }
