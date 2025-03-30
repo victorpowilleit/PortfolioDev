@@ -425,7 +425,7 @@ section {
 
 @keyframes rollIn {
     0% {
-        transform: translateX(-100vw);
+        transform: translateX(100vw);
         visibility: visible;
     }
     100% {

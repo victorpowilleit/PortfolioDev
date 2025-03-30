@@ -38,7 +38,8 @@ window.onscroll = () => {
         if (window.innerHeight > targetScrollPosition + 100) {
             projects.forEach((project, index) => {
                 project.classList.add('animated')
-                project.style.animationDelay = `${totalDelay - (index * delayStep)}s`
+                // project.style.animationDelay = `${totalDelay - (index * delayStep)}s`
+                project.style.animationDelay = `${index * delayStep}s`
             })
             animated = true
             // window.onscroll = null
