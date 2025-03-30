@@ -17,39 +17,62 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: 1px solid #33F8;
 }
 
-.text-red{
+body {
+    background-color: var(--gray-200);
+}
+
+.debug{
+    >*{
+        border: 1px solid #33F8;
+    }
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-red {
     color: var(--red);
 }
-.text-green{
+
+.text-green {
     color: var(--green);
 }
-.text-yellow{
+
+.text-yellow {
     color: var(--yellow);
 }
-.text-purple{
+
+.text-purple {
     color: var(--purple);
 }
-.text-blue{
+
+.text-blue {
     color: var(--blue);
 }
-.text-gray-100{
+
+.text-gray-100 {
     color: var(--gray-100);
 }
-.text-gray-200{
+
+.text-gray-200 {
     color: var(--gray-200);
 }
-.text-gray-300{
+
+.text-gray-300 {
     color: var(--gray-300);
 }
+
 .text-gray-400 {
     color: var(--gray-400);
 }
+
 .text-gray-500 {
     color: var(--gray-500);
 }
+
 .text-gray-600 {
     color: var(--gray-600);
 }
@@ -84,23 +107,23 @@
 }
 
 .title-lg, .title-md, .title-sm, .subtitle {
-    line-height: 1.2;
+    line-height: 120%;
 }
 
-.subtitle{
+.subtitle {
     font-family: 'Inconsolata', monospace;
 }
 
 .text-md, .text-sm {
     font-family: 'Maven Pro', monospace;
-    line-height: 1.4;
+    line-height: 140%;
 }
 
 .subtitle, .text-md, .text-sm {
     font-weight: normal;
 }
 
-.no-wrap{
+.no-wrap {
     white-space: nowrap;
 }
 
@@ -115,11 +138,11 @@ main {
     width: 100%;
     height: fit-content;
     min-height: 100dvh;
-    max-width: 1366px;
+    /*max-width: 1366px;*/
     background-color: var(--gray-200);
+    padding-bottom: 50px;
 }
 
-/*HERO SECTION*/
 section {
     display: flex;
     width: 100%;
@@ -129,13 +152,18 @@ section {
         max-width: 1040px;
     }
 
+    /*HERO SECTION*/
+
     &.hero {
         min-height: 100dvh;
+        width: 100vw;
         background-image: url('./assets/Background_Intro.png');
-        background-size: cover;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
         background-position: center right;
 
         > .info {
+            /*position: relative;*/
             margin: 0 auto;
             max-width: 650px;
             display: flex;
@@ -162,7 +190,7 @@ section {
                     background-size: cover;
                 }
 
-                &::after{
+                &::after {
                     content: '';
                     position: absolute;
                     bottom: -10px;
@@ -176,14 +204,77 @@ section {
                     background-size: cover;
                 }
             }
+
             > .title-lg {
                 margin: 0.5rem 0 1.25rem 0;
             }
+
             > i {
                 font-size: 32px;
                 position: absolute;
                 bottom: 50px;
+                animation: bounce .45s ease-in infinite alternate;
             }
         }
+    }
+
+    &.portfolio {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 56px;
+
+        > header {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        > .projects-grid {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            > .project {
+                width: 330px;
+                height: 280px;
+                padding: 12px;
+                background-color: var(--gray-300);
+                display: flex;
+                flex-direction: column;
+                border-radius: 12px;
+                gap: 16px;
+                transition: box-shadow 0.2s;
+                &:hover {
+                    box-shadow: inset 0 0 4px var(--gray-400);
+                }
+
+                >img{
+                    width: 100%;
+                    aspect-ratio: 1.9615/1;
+                    border-radius: 8px;
+                }
+                >.text{
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    >.title-sm {
+                        margin-bottom: 8px;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+@keyframes bounce {
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(50%);
     }
 }
