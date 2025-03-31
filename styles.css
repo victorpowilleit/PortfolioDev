@@ -276,7 +276,7 @@ section {
             > i {
                 font-size: 32px;
                 position: fixed;
-                bottom: 50px;
+                top: calc(100vh - 80px);
                 animation: bounce .45s ease-in infinite alternate;
             }
         }
