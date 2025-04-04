@@ -1,16 +1,22 @@
 // Get elements
 const projectGrid = Array.from(document.getElementsByClassName('projects-grid'))[0];
 const projects = Array.from(document.getElementsByClassName('project'));
+const hoverTargets = Array.from(document.getElementsByClassName('cursor-interaction'))
+const clickTargets = Array.from(document.getElementsByClassName('cursor-click'))
 const linkedin = document.getElementById('linkedin');
 const instagram = document.getElementById('instagram');
 const github = document.getElementById('github');
 const email = document.getElementById('email');
+const cursor = document.getElementById('cursor');
 
 // Define links
 const linkedinLink = 'https://www.linkedin.com/in/victorpowilleit/'
 const instagramLink = 'https://www.instagram.com/_victor.powilleit_/'
 const githubLink = 'https://github.com/victorpowilleit'
 const emailLink = 'mailto:contato@vpdev.com.br'
+
+// Auxiliary Variables
+let lastCursorY
 
 // Auxiliary functions
 function findStyleById(id) {
@@ -34,6 +40,19 @@ function setLink(element, link) {
     }
 }
 
+function updateCursorPosition(e=null){
+    if(e){
+        cursorX = e.clientX;
+        cursorY = lastCursorY = e.clientY;
+        cursor.style.left = `${cursorX}px`;
+        cursor.style.top = `${cursorY+window.scrollY}px`;
+    } else {
+        if(lastCursorY){
+            cursor.style.top = `${lastCursorY + window.scrollY}px`;
+        }
+    }
+}
+
 // Setting Links
 setLink(linkedin, linkedinLink);
 setLink(instagram, instagramLink);
@@ -45,6 +64,7 @@ const arrowDownStyles = findStyleById('arrow-down');
 const delayStep = 0.1
 let animated = false
 window.onscroll = () => {
+    updateCursorPosition();
     const opacity = Math.max(0, Math.min(100, 100 - ((window.scrollY - 10) * 0.75)))
     const targetScrollPosition = projectGrid.getBoundingClientRect().top;
     arrowDownStyles.opacity = `${opacity}%`;
@@ -64,3 +84,19 @@ window.onscroll = () => {
         }
     }
 }
+
+let cursorX, cursorY;
+//Cursor - Set Hover Event
+hoverTargets.forEach(target => {
+    target.addEventListener('mouseenter', () => cursor.classList.add('transparent'))
+    target.addEventListener('mouseleave', () => cursor.classList.remove('transparent'))
+})
+clickTargets.forEach(target => {
+    target.addEventListener('mouseenter', () => cursor.classList.add('click-me'))
+    target.addEventListener('mouseleave', () => cursor.classList.remove('click-me'))
+})
+
+// Cursor - Set mouse position update
+window.addEventListener('mousemove', e => {
+    updateCursorPosition(e);
+})
