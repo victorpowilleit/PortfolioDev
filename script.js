@@ -13,22 +13,23 @@ const githubLink = 'https://github.com/victorpowilleit'
 const emailLink = 'mailto:contato@vpdev.com.br'
 
 // Auxiliary functions
-function findStyleById(id){
-    for (const sheet of Array.from(document.styleSheets)){
-        try{
-            for(const rule of sheet.cssRules){
-                if(rule.selectorText === `#${id}`){
+function findStyleById(id) {
+    for (const sheet of Array.from(document.styleSheets)) {
+        try {
+            for (const rule of sheet.cssRules) {
+                if (rule.selectorText === `#${id}`) {
                     return rule.style
                 }
             }
-        }catch(e){}
+        } catch (e) {
+        }
     }
     const el = document.getElementById(id)
     return el ? el.style : null
 }
 
-function setLink(element, link){
-    element.onclick = ()=>{
+function setLink(element, link) {
+    element.onclick = () => {
         window.open(link, '_blank');
     }
 }
@@ -44,9 +45,15 @@ const arrowDownStyles = findStyleById('arrow-down');
 const delayStep = 0.1
 let animated = false
 window.onscroll = () => {
-    const opacity = Math.max(0, Math.min(100, 100 - ((window.scrollY-10)*0.75)))
+    const opacity = Math.max(0, Math.min(100, 100 - ((window.scrollY - 10) * 0.75)))
     const targetScrollPosition = projectGrid.getBoundingClientRect().top;
     arrowDownStyles.opacity = `${opacity}%`;
+    if (animated && opacity > 1) {
+        animated = false
+        projects.forEach(project => {
+            project.classList.remove('animated')
+        })
+    }
     if (!animated) {
         if (window.innerHeight > targetScrollPosition + 100) {
             projects.forEach((project, index) => {
